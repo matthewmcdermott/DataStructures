@@ -1,0 +1,54 @@
+// main.cpp (used with functions.h)
+// Written by Matthew McDermott (U70910297)
+// This file is used to demonstrate the capabilities of the
+// functions.h file.
+
+#include <iostream>
+#include <string>
+#include <stack>
+#include <vector>
+#include <queue>
+#include "functions.h"
+
+using namespace std;
+
+int main()
+{
+   /*This portion of main.cpp will test the getInfixExpression function*/
+   string string1 = "ab+";
+   string string2 = "ab+cd-*";
+   string emptyString = "";
+   cout << "\nstring1 before change: " << string1 <<
+         "\nstring1 after change: " << getInfixExpression(string1)<< endl;
+   cout << "\nstring2 before change: " << string2 <<
+            "\nstring2 after change: " << getInfixExpression(string2)<< endl;
+   cout << "\nemptyString before change: " << emptyString <<
+            "\nemptyString after change: " <<
+            getInfixExpression(emptyString)<< endl;
+
+   /*This portion of main.cpp will test the radixSort function*/
+
+   //First test with base 10, 8 numbers in vector, 3 digits per number
+   vector<string> numbers1;
+   numbers1.push_back("678");
+   numbers1.push_back("721");
+   numbers1.push_back("304");
+   numbers1.push_back("620");
+   numbers1.push_back("871");
+   numbers1.push_back("224");
+   numbers1.push_back("302");
+   numbers1.push_back("001");
+
+   int digitsPerNumber = 3;
+   int base = 10;
+   cout << "Unsorted Numbers: ";
+   displayVector(numbers1);
+   cout << "Sorted Numbers: " ;
+   radixSort(numbers1, digitsPerNumber, base);
+   displayVector(numbers1);
+   cout << endl;
+
+   return 0;
+}
+
+

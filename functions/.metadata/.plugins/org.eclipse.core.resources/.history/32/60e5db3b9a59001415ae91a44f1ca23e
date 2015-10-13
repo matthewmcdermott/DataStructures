@@ -1,0 +1,19 @@
+// main.cpp (used with functions.h)
+// Written by Matthew McDermott (U70910297)
+// This file is used to demonstrate the capabilities of the
+// functions.h file.
+
+#include <iostream>
+#include <string>
+#include <stack>
+
+using namespace std;
+
+int main()
+{
+   /*This portion of main.cpp will test the getInfix
+
+   return 0;
+}
+
+

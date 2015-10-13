@@ -1,0 +1,313 @@
+// main.cpp (to test the bst.h file)
+// Written by Matthew McDermott (U70910297)
+// This main file was written to test all of the functionality of the
+// bst.h file.
+
+#include <iostream>
+#include <cstdlib>
+#include "bst.h"
+
+using namespace std;
+
+int main()
+{
+   srand(time(NULL)); // seeding srand with time
+   const int RANDOM_SIZE = 20;
+
+   /***************************************************************************
+    * Testing Integer Tree with a fixed tree of integers
+    * *************************************************************************
+    */
+
+   BinarySearchTree<int> firstTree;
+   BinarySearchTree<int> copiedFirstTree;
+
+   //test firstTree before it is filled
+   cout << "Testing firstTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << firstTree.getMaximum() << endl;
+   cout << "getMinimum: " << firstTree.getMinimum() << endl;
+   cout << "getHeight: " << firstTree.getHeight() << endl;
+   cout << "getSize: " << firstTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   firstTree.inorder(cout);
+   cout << "preorder: " << endl;
+   firstTree.preorder(cout);
+   cout << "postorder: " << endl;
+   firstTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for firstTree
+   cout << "Displaying the Graphic for firstTree: \n";
+   firstTree.displayGraphic(cout);
+
+   //fill firstTree with numbers 4-15
+   firstTree.insert(6);
+   firstTree.insert(9);
+   firstTree.insert(5);
+   firstTree.insert(4);
+   firstTree.insert(8);
+   firstTree.insert(7);
+   firstTree.insert(10);
+   firstTree.insert(11);
+   firstTree.insert(12);
+   firstTree.insert(15);
+   firstTree.insert(14);
+   firstTree.insert(13);
+
+   //Test firstTree after it is filled
+   cout << "Testing firstTree after it is filled. \n";
+   cout << "getMaximum: " << firstTree.getMaximum() << endl;
+   cout << "getMinimum: " << firstTree.getMinimum() << endl;
+   cout << "getHeight: " << firstTree.getHeight() << endl;
+   cout << "getSize: " << firstTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   firstTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   firstTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   firstTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for firstTree
+   cout << "Displaying the Graphic for firstTree: \n";
+   firstTree.displayGraphic(cout);
+    //copy firstTree to copiedFirstTree and display the graphic
+
+   cout << "\nCopying firstTree to copiedFirstTree and displaying: " << endl;
+   copiedFirstTree = firstTree;
+   copiedFirstTree.displayGraphic(cout);
+
+   //insert more numbers before and after previous values, and re-test
+   firstTree.insert(104);
+   firstTree.insert(91);
+   firstTree.insert(1005);
+   firstTree.insert(1);
+   firstTree.insert(2);
+   firstTree.insert(3);
+
+   cout << "Added new values, both higher and lower." << endl;
+   cout << "getMaximum: " << firstTree.getMaximum() << endl;
+   cout << "getMinimum: " << firstTree.getMinimum() << endl;
+   cout << "getHeight: " << firstTree.getHeight() << endl;
+   cout << "getSize: " << firstTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   firstTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   firstTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   firstTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for firstTree
+   cout << "Displaying the Graphic for firstTree: \n";
+   firstTree.displayGraphic(cout);
+
+    //copy firstTree to copiedFirstTree and display the graphic
+   cout << "\nCopying firstTree to copiedFirstTree and displaying: " << endl;
+   copiedFirstTree = firstTree;
+   copiedFirstTree.displayGraphic(cout);
+
+   /**Testing Search functionality **/
+
+   //Search for the number 10 in the firstTree variable
+   cout << "Testing search function.  Find 10: " << endl;
+   if (firstTree.search(10)){
+      cout << "Found 10!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+   //Search for the number 3001 in the firstTree variable
+   cout << "Now find 3001: " << endl;
+   if (firstTree.search(3001)){
+      cout << "Found 3001!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+   cout << endl; // blank line
+
+   /* Testing the copy constructor */
+   BinarySearchTree<int> copiedTree;
+   copiedTree = firstTree;
+   cout << "Printing the copied tree\n";
+   copiedTree.displayGraphic(cout);
+   cout << endl;
+   cout << endl;
+
+   /***************************************************************************
+    * Testing Integer Tree with randomly generated numbers of size 20
+    * *************************************************************************
+    */
+
+   BinarySearchTree<int> randomTree;
+   BinarySearchTree<int> copiedRandomTree;
+   cout << "------------------------------------------------------------\n";
+   cout << "Testing randomTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << randomTree.getMaximum() << endl;
+   cout << "getMinimum: " << randomTree.getMinimum() << endl;
+   cout << "getHeight: " << randomTree.getHeight() << endl;
+   cout << "getSize: " << randomTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   randomTree.inorder(cout);
+   cout << "preorder: " << endl;
+   randomTree.preorder(cout);
+   cout << "postorder: " << endl;
+   randomTree.postorder(cout);
+   cout << endl;  //blank line
+
+   //display the graphic for randomTree
+   cout << "Displaying the Graphic for randomTree: \n";
+   randomTree.displayGraphic(cout);
+   cout << endl;  //blank line
+
+   //fill randomTree with random numbers from 1 to 2000, randomTree is size 20
+   for ( int i = 0; i < RANDOM_SIZE; ++i){
+      randomTree.insert(rand()%2000+1);
+   }
+
+   cout << "Testing randomTree after it is filled.  \n";
+   cout << "getMaximum: " << randomTree.getMaximum() << endl;
+   cout << "getMinimum: " << randomTree.getMinimum() << endl;
+   cout << "getHeight: " << randomTree.getHeight() << endl;
+   cout << "getSize: " << randomTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   randomTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   randomTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   randomTree.postorder(cout);
+   cout << endl;  //blank line
+
+   //display the graphic for randomTree
+   cout << "Displaying the Graphic for randomTree: \n";
+   randomTree.displayGraphic(cout);
+
+   //copy randomTree to copiedRandomTree and display the graphic
+   cout << "\nCopying randomTree to copiedRandomTree and displaying: " << endl;
+   copiedRandomTree = randomTree;
+   copiedRandomTree.displayGraphic(cout);
+
+   /***************************************************************************
+    * Testing Double Tree with a fixed tree of doubles
+    * *************************************************************************
+    */
+
+
+   BinarySearchTree<double> doubleTree;
+   BinarySearchTree<double> copiedDoubleTree;
+
+   //test doubleTree before it is filled
+   cout << "------------------------------------------------------------\n";
+   cout << "Testing doubleTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << doubleTree.getMaximum() << endl;
+   cout << "getMinimum: " << doubleTree.getMinimum() << endl;
+   cout << "getHeight: " << doubleTree.getHeight() << endl;
+   cout << "getSize: " << doubleTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   doubleTree.inorder(cout);
+   cout << "preorder: " << endl;
+   doubleTree.preorder(cout);
+   cout << "postorder: " << endl;
+   doubleTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for doubleTree
+   cout << "Displaying the Graphic for doubleTree: \n";
+   doubleTree.displayGraphic(cout);
+
+    //copy doubleTree to copiedDoubleTree and display the graphic
+   cout << "\nCopying doubleTree to copiedDoubleTree and displaying: " << endl;
+   copiedDoubleTree = doubleTree;
+   copiedDoubleTree.displayGraphic(cout);
+
+   //fill doubleTree with numbers
+   doubleTree.insert(6.2);
+   doubleTree.insert(9.7);
+   doubleTree.insert(5.4);
+   doubleTree.insert(4.2);
+   doubleTree.insert(8.9);
+   doubleTree.insert(7.1);
+   doubleTree.insert(10.1);
+   doubleTree.insert(11.5);
+   doubleTree.insert(12.9);
+   doubleTree.insert(15.4);
+   doubleTree.insert(14.5);
+   doubleTree.insert(13.3);
+
+   //Test doubleTree after it is filled
+   cout << "Testing doubleTree after it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << doubleTree.getMaximum() << endl;
+   cout << "getMinimum: " << doubleTree.getMinimum() << endl;
+   cout << "getHeight: " << doubleTree.getHeight() << endl;
+   cout << "getSize: " << doubleTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   doubleTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   doubleTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   doubleTree.postorder(cout);
+   cout << endl;  //blank line
+
+   //display the graphic for dioubleTree
+   cout << "Displaying the Graphic for doubleTree: \n";
+   doubleTree.displayGraphic(cout);
+
+   //copy doubleTree to copiedDoubleTree and display the graphic
+   cout << "\nCopying doubleTree to copiedDoubleTree and displaying: " << endl;
+   copiedDoubleTree = doubleTree;
+   copiedDoubleTree.displayGraphic(cout);
+
+   //insert more numbers before and after previous values, and re-test
+   doubleTree.insert(104.3);
+   doubleTree.insert(91.7);
+   doubleTree.insert(1005.6);
+   doubleTree.insert(1.2);
+   doubleTree.insert(2.1);
+   doubleTree.insert(3.0);
+
+   cout << "Added new values, both higher and lower." << endl;
+   cout << "getMaximum: " << doubleTree.getMaximum() << endl;
+   cout << "getMinimum: " << doubleTree.getMinimum() << endl;
+   cout << "getHeight: " << doubleTree.getHeight() << endl;
+   cout << "getSize: " << doubleTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   doubleTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   doubleTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   doubleTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for doubleTree
+   cout << "Displaying the Graphic for doubleTree: \n";
+   doubleTree.displayGraphic(cout);
+
+    //copy doubleTree to copiedDoubleTree and display the graphic
+   cout << "\nCopying doubleTree to copiedDoubleTree and displaying: " << endl;
+   copiedDoubleTree = doubleTree;
+   copiedDoubleTree.displayGraphic(cout);
+
+   /**Testing Search functionality **/
+
+   //Search for the number 10 in the firstTree variable
+   cout << "Testing search function.  Find 10: " << endl;
+   if (doubleTree.search(10.1)){
+      cout << "Found 10.1!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+   //Search for the number 10.2 in the doubleTree variable
+   cout << "Now find 10.2: " << endl;
+   if (doubleTree.search(10.2)){
+      cout << "Found 10.2!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+
+
+
+   return 0;
+}

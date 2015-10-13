@@ -1,0 +1,212 @@
+// functions.h
+// Written by Matthew McDermott (U70910297)
+// Contains the functions for project 4
+//
+
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+#include <iostream>
+#include <string>
+#include <stack>
+#include <vector>
+#include <queue>
+#include <cmath>
+
+using namespace std;
+
+/*Constant Variables*/
+const int ALPHABET_SIZE = 26;
+
+string getInfixExpression(const string& postFix);
+void radixSort(vector<string>& numbers,
+      const int& digitsPerNumber, const int& radix);
+void displayVector(vector<string> vector1);
+string convertNumber(string number, const int& base);
+
+/**
+ * getInfixExpression
+ *
+ * Precondition:    We have a string in postFix notation
+ *                  that needs to be changed to infix notation.
+ * Postcondition:   The string is returned in infix notation.
+ */
+string getInfixExpression(const string& postFix)
+{
+   stack<string> stackA;
+   string right, left, temp, pushed;
+
+   //check for empty string
+   if (postFix.empty())
+      return "This string is empty";
+
+   //push operands onto stack and check for operators
+   for (unsigned int i = 0; i < postFix.size(); ++i)
+   {
+      if(postFix[i]== '+' ||
+         postFix[i]=='-'||
+         postFix[i] == '*' ||
+         postFix[i] == '/')
+      {
+         right = stackA.top() + ')';
+         stackA.pop();
+         left = '(' + stackA.top();
+         stackA.pop();
+         temp = left + postFix[i] + right;
+         stackA.push(temp);
+      }
+      else
+      {
+         pushed = postFix[i];
+         stackA.push(pushed);
+      }
+   }
+
+   return stackA.top();
+}
+
+/*
+ * Radix Sort
+ *
+ * PreConditions:   A vector must be sorted in ascending order
+ * PostConditions:  The vector is sorted
+ */
+void radixSort(vector<string>& numbers,
+      const int& digitsPerNumber, const int& radix)
+{
+   /*create a queue for each possible number that can be in a number*/
+   vector<queue<string> > buckets(radix);
+   vector<string>::iterator vectorIterator;
+   int digitI;
+
+   /*Check for empty numbers vector*/
+   if (numbers.empty())
+   {
+      cout << "\nThis vector is empty. " << endl;
+   }
+
+   /*Iterate over the digits of each number, starting with the lsd*/
+   for(int currentDigit = digitsPerNumber-1;
+         currentDigit >= 0 ; --currentDigit)
+   {
+
+      /*Iterate over each the numbers in the vector and put them in a bucket
+       * using an iterator*/
+      for (vectorIterator = numbers.begin();
+            vectorIterator != numbers.end();
+            vectorIterator++)
+      {
+         /*Isolate the current digit*/
+         if (radix > 10)
+         {
+            string temp = convertNumber(*vectorIterator, radix);
+         }
+         else
+         {
+            string temp = *vectorIterator;
+         }
+         int size = temp.size();
+         if (size != digitsPerNumber) //checks for required padding
+         {
+            digitI = 0;
+         }
+         else
+         {
+            char holder = temp[currentDigit];
+            digitI = holder - '0';
+         }
+         /*Push it into the proper bucket*/
+         buckets[digitI].push(temp);
+
+      }
+      numbers.clear(); //clear the numbers vector
+
+      /*Iterate over each of the buckets and pull out the numbers
+       * to put them back into numbers
+       */
+      for (int i = 0; i < radix; ++i)
+      {
+         while (buckets[i].size() != 0)
+         {
+
+            string putBack = buckets[i].front();
+            buckets[i].pop();
+            numbers.push_back(putBack);
+         }
+      }
+   }
+}
+
+/*
+ * Function to display the contents of a vector
+ *
+ * Preconditions:   A vector exists that is not empty
+ * Postconditions:  The contents of the vector are displayed
+ */
+void displayVector(vector<string> vector1)
+{
+   vector<string>::iterator displayIterator;
+   for (displayIterator = vector1.begin();
+         displayIterator != vector1.end(); ++displayIterator)
+   {
+      cout << *displayIterator << " ";
+   }
+   cout << endl;
+}
+
+
+/*
+ * converNumber is a helper function that allows to convert from alternate base
+ * numbers to decimal base numbers for computation.
+ *
+ * PreConditions:   a non decimal base number exists
+ * PostConditions:  returns a string of the converted number
+ */
+string convertNumber(string number, const int& base)
+{
+   int digit = 0;
+   int newNumber = 0;
+   char alphabet[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M',
+         'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+   int size = number.size();
+   int expSize = number.size();
+   cout << "size: " << size << endl;
+
+
+   /*convert string number to an int with base 10*/
+   for (int i = 0; i < size; ++i)
+   {
+      char character = number[i];
+      cout << "character before comparison: " << character << endl;
+      if (character == '0'|| character == '1' || character == '2' ||
+            character == '3' || character == '4' || character == '5' ||
+            character == '6' || character == '7' || character == '8' ||
+            character == '9')
+      {
+         cout << "character: " << character << endl;
+                  digit = character - '0';
+
+      }
+      else
+      {
+         for (int j = 0; j < ALPHABET_SIZE; ++j)
+         {
+           if (character == alphabet[j])
+           {
+              digit = j+10;
+           }
+        }
+      }
+
+      cout << "Digit: " << digit << endl;
+      cout << "base: " << base << endl;
+      newNumber += (digit*pow(base,expSize-1));
+      cout << "newnumber: " << newNumber << endl;
+      --expSize;
+   }
+   cout << "newNumber: " << newNumber << endl;
+   std::string stringNumber = to_string(newNumber);
+   return stringNumber;
+}
+
+#endif

@@ -1,0 +1,176 @@
+// functions.h
+// Written by Matthew McDermott (U70910297)
+// Contains the functions for project 4
+//
+
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+#include <iostream>
+#include <string>
+#include <stack>
+#include <vector>
+#include <queue>
+#include <cmath>
+
+using namespace std;
+
+/*Constant Variables*/
+const int ALPHABET_SIZE = 26;
+
+string getInfixExpression(const string& postFix);
+void radixSort(vector<string>& numbers,
+      const int& digitsPerNumber, const int& radix);
+void displayVector(vector<string> vector1);
+
+/**
+ * getInfixExpression
+ *
+ * Precondition:    We have a string in postFix notation
+ *                  that needs to be changed to infix notation.
+ * Postcondition:   The string is returned in infix notation.
+ */
+string getInfixExpression(const string& postFix)
+{
+   stack<string> stackA;
+   string right, left, temp, pushed;
+
+   //check for empty string
+   if (postFix.empty())
+      return "This string is empty";
+
+   //push operands onto stack and check for operators
+   for (unsigned int i = 0; i < postFix.size(); ++i)
+   {
+      if(postFix[i]== '+' ||
+         postFix[i]=='-'||
+         postFix[i] == '*' ||
+         postFix[i] == '/')
+      {
+         right = stackA.top() + ')';
+         stackA.pop();
+         left = '(' + stackA.top();
+         stackA.pop();
+         temp = left + postFix[i] + right;
+         stackA.push(temp);
+      }
+      else
+      {
+         pushed = postFix[i];
+         stackA.push(pushed);
+      }
+   }
+
+   return stackA.top();
+}
+
+/*
+ * Radix Sort
+ *
+ * PreConditions:   A vector must be sorted in ascending order
+ * PostConditions:  The vector is sorted
+ */
+void radixSort(vector<string>& numbers,
+      const int& digitsPerNumber, const int& radix)
+{
+   /*create a queue for each possible number that can be in a number*/
+   vector<queue<string> > buckets(radix);
+   vector<string>::iterator vectorIterator;
+   int digitI;
+   char alphabet[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M',
+            'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+   /*Check for empty numbers vector*/
+   if (numbers.empty())
+   {
+      cout << "\nThis vector is empty. " << endl;
+   }
+
+   /*Iterate over the digits of each number, starting with the lsd*/
+   for(int currentDigit = digitsPerNumber-1;
+         currentDigit >= 0 ; --currentDigit)
+   {
+
+      /*Iterate over each the numbers in the vector and put them in a bucket
+       * using an iterator*/
+      for (vectorIterator = numbers.begin();
+            vectorIterator != numbers.end();
+            vectorIterator++)
+      {
+         /*Isolate the current digit*/
+         string temp, higherTemp;
+         temp = *vectorIterator;
+
+         int size = temp.size();
+         if (size != digitsPerNumber) //checks for required padding
+         {
+            digitI = 0;
+         }
+         else
+         {
+            char holder = temp[currentDigit];
+            if (holder == '0' || holder == '1' || holder == '2' ||
+                  holder == '3' || holder == '4' || holder == '5' ||
+                  holder == '6' || holder == '7' || holder == '8' ||
+                  holder == '9') //check for base higher than 10
+            {
+               cout << "digit before holder-0 statement: " << digitI << endl;
+               digitI = holder - '0';
+               cout << "digit after holder-0 statement: " << digitI << endl;
+
+            }
+            else
+            {
+               for (int x = 0; x < ALPHABET_SIZE; ++x)
+               {
+                  if (holder == alphabet[x])
+                  {
+                     holder = x;
+                     digitI = holder - '0';
+                     cout << "holder inside holder==alphabet comparison: " << holder << endl;
+                     cout << "digitI inside holder==alphabet comparison: " << digitI << endl;
+                  }
+               }
+            }
+         }
+         /*Push it into the proper bucket*/
+         buckets[digitI].push(temp);
+
+      }
+      numbers.clear(); //clear the numbers vector
+
+      /*Iterate over each of the buckets and pull out the numbers
+       * to put them back into numbers
+       */
+      for (int i = 0; i < radix; ++i)
+      {
+         while (buckets[i].size() != 0)
+         {
+
+            string putBack = buckets[i].front();
+            buckets[i].pop();
+            numbers.push_back(putBack);
+         }
+      }
+   }
+}
+
+/*
+ * Function to display the contents of a vector
+ *
+ * Preconditions:   A vector exists that is not empty
+ * Postconditions:  The contents of the vector are displayed
+ */
+void displayVector(vector<string> vector1)
+{
+   vector<string>::iterator displayIterator;
+   for (displayIterator = vector1.begin();
+         displayIterator != vector1.end(); ++displayIterator)
+   {
+      cout << *displayIterator << " ";
+   }
+   cout << endl;
+}
+
+
+#endif

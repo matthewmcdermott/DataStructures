@@ -1,0 +1,144 @@
+99 21 
+
+5.6 1.2 
+
+aaa ddd 
+
+99 21 42 
+
+5.6 1.2 7.8 
+
+aaa ddd bbb 
+
+99 21 42 74 
+
+5.6 1.2 7.8 3.4 
+
+aaa ddd bbb eee 
+
+start test 0
+
+99 
+
+end test
+
+start test 0
+
+5.6 
+
+end test
+
+start test 0
+
+aaa 
+
+end test
+
+start test 1
+
+21 99 
+99 21 
+
+end test
+
+start test 1
+
+1.2 5.6 
+5.6 1.2 
+
+end test
+
+start test 1
+
+ddd aaa 
+aaa ddd 
+
+end test
+
+start test 3
+
+74 42 21 99 
+42 74 21 99 
+42 21 74 99 
+42 21 99 74 
+74 21 42 99 
+21 74 42 99 
+21 42 74 99 
+21 42 99 74 
+74 21 99 42 
+21 74 99 42 
+21 99 74 42 
+21 99 42 74 
+74 42 99 21 
+42 74 99 21 
+42 99 74 21 
+42 99 21 74 
+74 99 42 21 
+99 74 42 21 
+99 42 74 21 
+99 42 21 74 
+74 99 21 42 
+99 74 21 42 
+99 21 74 42 
+99 21 42 74 
+
+end test
+
+start test 3
+
+3.4 7.8 1.2 5.6 
+7.8 3.4 1.2 5.6 
+7.8 1.2 3.4 5.6 
+7.8 1.2 5.6 3.4 
+3.4 1.2 7.8 5.6 
+1.2 3.4 7.8 5.6 
+1.2 7.8 3.4 5.6 
+1.2 7.8 5.6 3.4 
+3.4 1.2 5.6 7.8 
+1.2 3.4 5.6 7.8 
+1.2 5.6 3.4 7.8 
+1.2 5.6 7.8 3.4 
+3.4 7.8 5.6 1.2 
+7.8 3.4 5.6 1.2 
+7.8 5.6 3.4 1.2 
+7.8 5.6 1.2 3.4 
+3.4 5.6 7.8 1.2 
+5.6 3.4 7.8 1.2 
+5.6 7.8 3.4 1.2 
+5.6 7.8 1.2 3.4 
+3.4 5.6 1.2 7.8 
+5.6 3.4 1.2 7.8 
+5.6 1.2 3.4 7.8 
+5.6 1.2 7.8 3.4 
+
+end test
+
+start test 3
+
+eee bbb ddd aaa 
+bbb eee ddd aaa 
+bbb ddd eee aaa 
+bbb ddd aaa eee 
+eee ddd bbb aaa 
+ddd eee bbb aaa 
+ddd bbb eee aaa 
+ddd bbb aaa eee 
+eee ddd aaa bbb 
+ddd eee aaa bbb 
+ddd aaa eee bbb 
+ddd aaa bbb eee 
+eee bbb aaa ddd 
+bbb eee aaa ddd 
+bbb aaa eee ddd 
+bbb aaa ddd eee 
+eee aaa bbb ddd 
+aaa eee bbb ddd 
+aaa bbb eee ddd 
+aaa bbb ddd eee 
+eee aaa ddd bbb 
+aaa eee ddd bbb 
+aaa ddd eee bbb 
+aaa ddd bbb eee 
+
+end test
+

@@ -1,0 +1,117 @@
+// main.cpp (to test the bst.h file)
+// Written by Matthew McDermott (U70910297)
+// This main file was written to test all of the functionality of the
+// bst.h file.
+
+#include <iostream>
+#include <cstdlib>
+#include "bst.h"
+
+using namespace std;
+
+int main()
+{
+   /********************************************************************************
+    * Testing Integer Tree
+    * ******************************************************************************
+    */
+
+   /* Test constructor, insert, getSize, getHeight, getMinimum, and getMaximum functions
+    * on a predefined binary search tree. We will test with random numbers later.*/
+
+   BinarySearchTree<int> firstTree;
+   cout << "Size of firstTree: " << firstTree.getSize() << endl;
+   cout << "Height of firstTree: " << firstTree.getHeight() << endl;
+   BinarySearchTree<int> emptyTree;
+   cout << "emptyTree Maximum and Minimum should return a random garbage value"
+         << ", because it is empty. \nMaximum: " << emptyTree.getMaximum()
+         << "   \nMinimum: " << emptyTree.getMinimum() << endl;
+
+   firstTree.insert(6);
+   firstTree.insert(9);
+   firstTree.insert(5);
+   firstTree.insert(4);
+   firstTree.insert(8);
+   firstTree.insert(7);
+   firstTree.insert(10);
+   firstTree.insert(11);
+   firstTree.insert(12);
+   firstTree.insert(15);
+   firstTree.insert(14);
+   firstTree.insert(13);
+
+   firstTree.displayGraphic(cout);
+   cout << "Maximum value in tree: " << firstTree.getMaximum() << endl;
+   cout << "Minimum value in tree: " << firstTree.getMinimum() << endl;
+   cout << "Size of firstTree: " << firstTree.getSize() << endl;
+   cout << "Height of firstTree: " << firstTree.getHeight() << endl;
+
+   firstTree.insert(104);
+   firstTree.insert(91);
+   firstTree.insert(1005);
+   firstTree.insert(1);
+   firstTree.insert(2);
+   firstTree.insert(3);
+   cout << "Added new values, both higher and lower." << endl;
+   cout << "Get new Maximum value: " << firstTree.getMaximum() << endl;
+   cout << "Get new Minimum value: " << firstTree.getMinimum() << endl;
+   cout << "Size of firstTree: " << firstTree.getSize() << endl;
+   cout << "Height of firstTree: " << firstTree.getHeight() << endl;
+   firstTree.displayGraphic(cout);
+
+   firstTree.insert(1006);
+   cout << "Added one more to the max, should increase the height by 1."
+         << " \nHeight: " << firstTree.getHeight() << endl;
+
+   firstTree.displayGraphic(cout);
+
+   /* Testing inorder Traversal */
+   cout << "Testing in-order Traversal: " << endl;
+   firstTree.inorder(cout);
+   cout << endl; // newline
+   cout << "Testing in-order with empty tree: " << endl;
+   emptyTree.inorder(cout);
+   cout << endl; // newline
+
+   /* Testing preorder Traversal */
+   cout << "Testing pre-order Traversal: " << endl;
+   firstTree.preorder(cout);
+   cout << endl; //newline
+   cout << "Testing pre-order with empty tree: " << endl;
+   emptyTree.preorder(cout);
+   cout << endl; // newline
+
+   /* Testing postorder Traversal */
+   cout << "Testing post-order Traversal: " << endl;
+   firstTree.postorder(cout);
+   cout << endl; //newline
+   cout << "Testing pre-order with empty tree: " << endl;
+   emptyTree.preorder(cout);
+   cout << endl; // newline
+
+   /*Testing Search functionality */
+   //Search for the number 10 in the firstTree variable
+   cout << "Testing search function.  Find 10: " << endl;
+   if (firstTree.search(10)){
+      cout << "Found 10!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+   //Search for the number 3001 in the firstTree variable
+   cout << "Now find 3001: " << endl;
+   if (firstTree.search(3001)){
+      cout << "Found 3001!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+
+   /* Testing the copy constructor */
+   BinarySearchTree<int> copiedTree;
+   //copiedTree = firstTree;
+   copiedTree = copyBinarySearchTree(firstTree._root, copiedTree._root);
+
+
+   return 0;
+}

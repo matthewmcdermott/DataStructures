@@ -1,0 +1,136 @@
+// main.cpp (for circularLinkedList.h)
+// Written by Matthew McDermott U70910297
+// This main file demonstrates the capabilities of the
+// circularLinkedList class and uses a header node.
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include "circularLinkedList.h"
+
+using namespace std;
+
+int main()
+{
+
+   srand((unsigned int)time(NULL));
+
+   /*This section tests the basic functionality of the List class*/
+   List<int> defaultList;
+   if (defaultList.isEmpty() == true)
+      cout << "defaultList is empty" << endl;
+   else
+      cout << "defaultLiust is not empty " << endl;
+
+   List<int> insertTestList;
+
+   cout << "\ninsertTestList was created, but should be empty. " << endl;
+   insertTestList.display(cout);
+  
+   //test insert()
+   cout << "Inserting 0 to 5 in their corresponding positions " << endl;
+   insertTestList.insert(0,0);
+   insertTestList.insert(1,1);
+   insertTestList.insert(2,2);
+   insertTestList.insert(3,3);
+   insertTestList.insert(4,4);
+   insertTestList.insert(5,5);
+
+   cout << "Calling display now" << endl; //test display()
+   insertTestList.display(cout);
+
+   //test getSize()
+   cout << "\nCalling getSize now: " << insertTestList.getSize() << endl;
+   //check isEmpty()
+   cout << "Checking isEmpty now: ";
+   if (insertTestList.isEmpty() == true)
+      cout << "insertTestList is empty" << endl;
+   else
+      cout << "insertTestList is not empty " << endl;
+
+   cout << endl;
+   cout << endl;
+
+   //test remove()
+   List<int> copyList;
+   cout << "Testing removal of position 3 " << endl;
+   copyList.remove(3);
+   copyList.display(cout);
+   copyList = insertTestList;
+   cout << "Testing removal of the end position 5 " << endl;
+   copyList.remove(5);
+   copyList.display(cout);
+   cout << endl;
+   cout << "Testing removal of the first position 0" << endl;
+   copyList = insertTestList;
+   copyList.remove(0);
+   copyList.display(cout);
+   cout << endl;
+   cout << endl;
+
+   //test the assignment operator
+   List<int> assignmentTestList;
+   cout << "Testing the assignment operator by copying insertTestList to assignmentTestList and displaying: " << endl;
+   assignmentTestList = insertTestList;
+   assignmentTestList.display(cout);
+   cout << endl;
+   
+   //testing the output operator
+   List<int> testOutputList;
+   cout << "Testing the output operator << by copying displaying testOutputList: " << endl;
+   testOutputList = insertTestList;
+   cout << testOutputList << endl;
+   cout << endl;
+
+   /*This section is to test the Josephus problem portion of the class*/
+   List<int> josephusList;
+   cout << "Testing the Josephus Algorithm.  Copying insertTestList to josephusList. " << endl;
+   josephusList = insertTestList;
+   cout << "Running Josephus Algorithm on the copied list. " << endl;
+   cout << "Result: " << josephusList.runJosephusAlgorithm() << endl;
+   
+   List<int> largerList;
+   //try with a larger list
+   for (int i = 0; i < 100; ++i)
+   {
+      largerList.insert(i,i);
+   }
+   cout << "Running Josephus Algorithm on the larger list. " << endl;
+   cout << "Result: " << largerList.runJosephusAlgorithm() << endl;
+
+   List<int> emptyList;
+   //try with an empty list
+   cout << "Running Josephus Algorithm on an empty list. " << endl;
+   cout << "Result: " << emptyList.runJosephusAlgorithm() << endl;
+
+   List<double> doubleList;
+   //try with a list of doubles
+   doubleList.insert(2.56,0);
+   doubleList.insert(4.98,1);
+   doubleList.insert(124.98,2);
+   doubleList.insert(0.65,3);
+   doubleList.insert(4.09,4);
+   doubleList.insert(27.63,5);
+   doubleList.insert(36.0003,6);
+   cout << "Running Josephus Algorithm on an double list. " << endl;
+   cout << "Result: " << doubleList.runJosephusAlgorithm() << endl;
+
+   List<char> charList;
+   //try with a list of chars
+   charList.insert('m',0);
+   charList.insert('a',1);
+   charList.insert('t',2);
+   charList.insert('t',3);
+   charList.insert('h',4);
+   charList.insert('e',5);
+   charList.insert('w',6);
+   charList.insert('m',7);
+   charList.insert('c',8);
+   charList.insert('d',9);
+   cout << "Running Josephus Algorithm on an char list. " << endl;
+   cout << "Result: " << charList.runJosephusAlgorithm() << endl;
+
+
+   return 0;
+}

@@ -1,0 +1,524 @@
+// main.cpp (to test the bst.h file)
+// Written by Matthew McDermott (U70910297)
+// This main file was written to test all of the functionality of the
+// bst.h file.
+
+#include <iostream>
+#include <cstdlib>
+#include "bst.h"
+
+using namespace std;
+
+int main()
+{
+   srand(time(NULL)); // seeding srand with time
+
+   //constants
+   const int RANDOM_SIZE = 20;
+
+   /***************************************************************************
+    * Testing provided and new functions with a fixed tree of integers
+    * *************************************************************************
+    */
+
+   BinarySearchTree<int> providedTree;
+
+   /*test for isEmpty()*/
+   cout << "Test providedTree for isEmpty(): " << endl;
+   if (providedTree.isEmpty()){
+      cout << "The tree is empty!\n";
+   }
+   else {
+      cout << "The tree is NOT empty! \n";
+   }
+   cout << endl; // blank line
+
+   /* test functions before the tree is filled */
+   cout << "------------------------------------------------------------\n";
+   cout << "Testing providedTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << providedTree.getMaximum() << endl;
+   cout << "getMinimum: " << providedTree.getMinimum() << endl;
+   cout << "getHeight: " << providedTree.getHeight() << endl;
+   cout << "getSize: " << providedTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   providedTree.inorder(cout);
+   cout << "preorder: " << endl;
+   providedTree.preorder(cout);
+   cout << "postorder: " << endl;
+   providedTree.postorder(cout);
+   cout << "displayGraphic: \n";
+   providedTree.displayGraphic(cout);
+   cout << "search for 10: \n";
+   providedTree.search(10);
+   cout <<"getSuccessor: \n";
+   providedTree.getSuccessor(10);
+   cout << "getPredecessor: \n";
+   providedTree.getPredecessor(10);
+   cout << endl;; // blank line
+
+
+   /*fill providedTree and for further testing*/
+   cout << "Filling providedTree using the insert function.\n";
+   providedTree.insert(10);
+   providedTree.insert(11);
+   providedTree.insert(12);
+   providedTree.insert(7);
+   providedTree.insert(9);
+   providedTree.insert(20);
+   providedTree.insert(21);
+   providedTree.insert(22);
+   providedTree.insert(15);
+   providedTree.insert(14);
+   providedTree.insert(16);
+   providedTree.insert(5);
+   providedTree.insert(6);
+   providedTree.insert(3);
+
+   /* test displayGraphic() */
+   cout << "Testing displayGraphic for providedTree after it is filled\n";
+   providedTree.displayGraphic(cout);
+   cout << endl; // blank line
+
+   /* test getSuccessor() */
+   cout << "Testing getSuccessor() function. Get successor of 15: \n";
+   cout << providedTree.getSuccessor(15) << endl;
+   cout << "Get successor of 3 (lowest in the tree):\n";
+   cout << providedTree.getSuccessor(3) << endl;
+   cout << "Get successor of 22 (highest in the tree):\n";
+   cout << providedTree.getSuccessor(22) << endl;
+   cout << endl; // blank line
+
+   /* test getPredecessor() */
+   cout << "Testing getPredecessor() function. Get predecessor of 15: \n";
+   cout << providedTree.getPredecessor(15) << endl;
+   cout << "Get predecessor of 3 (lowest in the tree):\n";
+   cout << providedTree.getPredecessor(3) << endl;
+   cout << "Get predecessor of 22 (highest in the tree):\n";
+   cout << providedTree.getPredecessor(22) << endl;
+   cout << endl; // blank line
+
+   /* test getMinimum */
+   cout << "Testing getMinimum: ";
+   providedTree.getMinimum();
+   cout << endl;  // blank line
+
+   /* test getMaxmimum */
+   cout << "Testing getMaximum: ";
+   providedTree.getMaximum();
+   cout << endl; // blank line
+
+   /*test getHeight */
+   cout << "Testing getHeight: " << providedTree.getHeight() << endl;
+
+   /* test getSize */
+   cout << "Testing getSize: " << providedTree.getHeight() << endl;
+
+   /* testing inorder traversal */
+   cout << "Inorder traversal: ";
+   providedTree.inorder(cout);
+   cout << endl;
+
+   /* testing postorder traversal */
+   cout << "Postorder traversal: ";
+   providedTree.postorder(cout);
+   cout << endl;
+
+   /* testing preorder traversal */
+   cout << "Preorder traversal: ";
+   providedTree.preorder(cout);
+   cout << endl;
+
+   //Search for the number 10 in the providedTree variable
+   cout << "Testing search function.  Find 10: " << endl;
+   if (providedTree.search(10)){
+      cout << "Found 10!\n";
+   }
+   else {
+     cout << "Not found. :(\n";
+   }
+   //Search for the number 23 in the providedTree variable
+   cout << "Now find 23: " << endl;
+   if (providedTree.search(23)){
+      cout << "Found 23!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+
+   /* test remove() */
+   cout << "Testing the remove() function.  Remove 9 (no children).\n";
+   providedTree.remove(9);
+   providedTree.displayGraphic(cout);
+
+   cout << "Remove 21 (1 child).\n";
+   providedTree.remove(21);
+   providedTree.displayGraphic(cout);
+
+   cout << "Remove 5 (2 children).\n";
+   providedTree.remove(5);
+   providedTree.displayGraphic(cout);
+
+   /***************************************************************************
+       * Copying providedTree and test functions on that
+       * *************************************************************************
+       */
+
+   BinarySearchTree<int> copiedProvidedTree;
+   /*test for isEmpty()*/
+   cout << "Test copiedProvidedTree for isEmpty(): " << endl;
+   if (copiedProvidedTree.isEmpty()){
+      cout << "The tree is empty!\n";
+   }
+   else {
+      cout << "The tree is NOT empty! \n";
+   }
+   cout << endl; // blank line
+
+   /* test functions before the tree is filled */
+   cout << "------------------------------------------------------------\n";
+   cout << "Testing copiedProvidedTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << copiedProvidedTree.getMaximum() << endl;
+   cout << "getMinimum: " << copiedProvidedTree.getMinimum() << endl;
+   cout << "getHeight: " << copiedProvidedTree.getHeight() << endl;
+   cout << "getSize: " << copiedProvidedTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   copiedProvidedTree.inorder(cout);
+   cout << "preorder: " << endl;
+   copiedProvidedTree.preorder(cout);
+   cout << "postorder: " << endl;
+   copiedProvidedTree.postorder(cout);
+   cout << "displayGraphic: \n";
+   copiedProvidedTree.displayGraphic(cout);
+   cout << "search for 10: \n";
+   copiedProvidedTree.search(10);
+   cout <<"getSuccessor: \n";
+   copiedProvidedTree.getSuccessor(10);
+   cout << "getPredecessor: \n";
+   copiedProvidedTree.getPredecessor(10);
+   cout << endl;; // blank line
+
+    /*fill copiedProvidedTree and for further testing*/
+   cout << "Filling copyProvidedTree using the insert function.\n";
+   copiedProvidedTree.insert(10);
+   copiedProvidedTree.insert(11);
+   copiedProvidedTree.insert(12);
+   copiedProvidedTree.insert(7);
+   copiedProvidedTree.insert(9);
+   copiedProvidedTree.insert(20);
+   copiedProvidedTree.insert(21);
+   copiedProvidedTree.insert(22);
+   copiedProvidedTree.insert(15);
+   copiedProvidedTree.insert(14);
+   copiedProvidedTree.insert(16);
+   copiedProvidedTree.insert(5);
+   copiedProvidedTree.insert(6);
+   copiedProvidedTree.insert(3);
+    /* test displayGraphic() */
+   cout << "Testing displayGraphic for copiedProvidedTree after it is filled\n";
+   copiedProvidedTree.displayGraphic(cout);
+    cout << endl; // blank line
+    /* test getSuccessor() */
+   cout << "Testing getSuccessor() function. Get successor of 15: \n";
+   cout << copiedProvidedTree.getSuccessor(15) << endl;
+   cout << "Get successor of 3 (lowest in the tree):\n";
+   cout << copiedProvidedTree.getSuccessor(3) << endl;
+   cout << "Get successor of 22 (highest in the tree):\n";
+   cout << copiedProvidedTree.getSuccessor(22) << endl;
+   cout << endl; // blank line
+    /* test getPredecessor() */
+   cout << "Testing getPredecessor() function. Get predecessor of 15: \n";
+   cout << copiedProvidedTree.getPredecessor(15) << endl;
+   cout << "Get predecessor of 3 (lowest in the tree):\n";
+   cout << copiedProvidedTree.getPredecessor(3) << endl;
+   cout << "Get predecessor of 22 (highest in the tree):\n";
+   cout << copiedProvidedTree.getPredecessor(22) << endl;
+   cout << endl; // blank line
+    /* test getMinimum */
+   cout << "Testing getMinimum: ";
+   copiedProvidedTree.getMinimum();
+   cout << endl;  // blank line
+    /* test getMaxmimum */
+   cout << "Testing getMaximum: ";
+   copiedProvidedTree.getMaximum();
+   cout << endl; // blank line
+    /*test getHeight */
+   cout << "Testing getHeight: " << copiedProvidedTree.getHeight() << endl;
+    /* test getSize */
+   cout << "Testing getSize: " << copiedProvidedTree.getHeight() << endl;
+    /* testing inorder traversal */
+   cout << "Inorder traversal: ";
+   copiedProvidedTree.inorder(cout);
+   cout << endl;
+    /* testing postorder traversal */
+   cout << "Postorder traversal: ";
+   copiedProvidedTree.postorder(cout);
+   cout << endl;
+    /* testing preorder traversal */
+   cout << "Preorder traversal: ";
+   copiedProvidedTree.preorder(cout);
+   cout << endl;
+
+   //Search for the number 10 in the copiedProvidedTree variable
+   cout << "Testing search function.  Find 10: " << endl;
+   if (copiedProvidedTree.search(10)){
+      cout << "Found 10!\n";
+   }
+   else {
+     cout << "Not found. :(\n";
+   }
+   //Search for the number 23 in the copiedProvidedTree variable
+   cout << "Now find 23: " << endl;
+   if (copiedProvidedTree.search(23)){
+      cout << "Found 23!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+
+   /* test remove() */
+   cout << "Testing the remove() function.  Remove 9 (no children).\n";
+   copiedProvidedTree.remove(9);
+   copiedProvidedTree.displayGraphic(cout);
+   cout << "Remove 21 (1 child).\n";
+   copiedProvidedTree.remove(21);
+   copiedProvidedTree.displayGraphic(cout);
+   cout << "Remove 5 (2 children).\n";
+   copiedProvidedTree.remove(5);
+   copiedProvidedTree.displayGraphic(cout);
+
+   /***************************************************************************
+    * Testing Integer Tree with randomly generated numbers of size 20
+    * *************************************************************************
+    */
+
+   BinarySearchTree<int> randomTree;
+   /*test for isEmpty()*/
+   cout << "Test randomTree for isEmpty(): " << endl;
+   if (randomTree.isEmpty()){
+      cout << "The tree is empty!\n";
+   }
+   else {
+      cout << "The tree is NOT empty! \n";
+   }
+   cout << endl; // blank line
+
+   /* test functions before the tree is filled */
+   cout << "------------------------------------------------------------\n";
+   cout << "Testing randomTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << randomTree.getMaximum() << endl;
+   cout << "getMinimum: " << randomTree.getMinimum() << endl;
+   cout << "getHeight: " << randomTree.getHeight() << endl;
+   cout << "getSize: " << randomTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   randomTree.inorder(cout);
+   cout << "preorder: " << endl;
+   randomTree.preorder(cout);
+   cout << "postorder: " << endl;
+   randomTree.postorder(cout);
+   cout << "displayGraphic: \n";
+   randomTree.displayGraphic(cout);
+   cout << "search for 10: \n";
+   randomTree.search(10);
+   cout <<"getSuccessor: \n";
+   randomTree.getSuccessor(10);
+   cout << "getPredecessor: \n";
+   randomTree.getPredecessor(10);
+   cout << endl;; // blank line
+
+   //fill randomTree with random numbers from 1 to 2000, randomTree is size 20
+   for ( int i = 0; i < RANDOM_SIZE; ++i){
+      randomTree.insert(rand()%2000+1);
+   }
+
+   /* test displayGraphic() */
+  cout << "Testing displayGraphic for randomTree after it is filled\n";
+  randomTree.displayGraphic(cout);
+   cout << endl; // blank line
+   /* test getSuccessor() */
+  cout << "Testing getSuccessor() function. Get successor of 15: \n";
+  cout << randomTree.getSuccessor(15) << endl;
+  cout << "Get successor of 3 (lowest in the tree):\n";
+  cout << randomTree.getSuccessor(3) << endl;
+  cout << "Get successor of 22 (highest in the tree):\n";
+  cout << randomTree.getSuccessor(22) << endl;
+  cout << endl; // blank line
+   /* test getPredecessor() */
+  cout << "Testing getPredecessor() function. Get predecessor of 15: \n";
+  cout << randomTree.getPredecessor(15) << endl;
+  cout << "Get predecessor of 3 (lowest in the tree):\n";
+  cout << randomTree.getPredecessor(3) << endl;
+  cout << "Get predecessor of 22 (highest in the tree):\n";
+  cout << randomTree.getPredecessor(22) << endl;
+  cout << endl; // blank line
+   /* test getMinimum */
+  cout << "Testing getMinimum: ";
+  randomTree.getMinimum();
+  cout << endl;  // blank line
+   /* test getMaxmimum */
+  cout << "Testing getMaximum: ";
+  randomTree.getMaximum();
+  cout << endl; // blank line
+   /*test getHeight */
+  cout << "Testing getHeight: " << randomTree.getHeight() << endl;
+   /* test getSize */
+  cout << "Testing getSize: " << randomTree.getHeight() << endl;
+   /* testing inorder traversal */
+  cout << "Inorder traversal: ";
+  randomTree.inorder(cout);
+  cout << endl;
+   /* testing postorder traversal */
+  cout << "Postorder traversal: ";
+  randomTree.postorder(cout);
+  cout << endl;
+   /* testing preorder traversal */
+  cout << "Preorder traversal: ";
+  randomTree.preorder(cout);
+  cout << endl;
+
+  //Search for the number 10 in the randomTree variable
+  cout << "Testing search function.  Find 10: " << endl;
+  if (randomTree.search(10)){
+     cout << "Found 10!\n";
+  }
+  else {
+    cout << "Not found. :(\n";
+  }
+  //Search for the number 23 in the randomTree variable
+  cout << "Now find 23: " << endl;
+  if (randomTree.search(23)){
+     cout << "Found 23!\n";
+  }
+  else {
+     cout << "Not found. :(\n";
+  }
+
+  /* test remove() */
+  int rand1 = rand()%2000+1;
+  cout << "Testing the remove() function.  Remove " << rand1 << ": \n";
+  randomTree.remove(rand1);
+  randomTree.displayGraphic(cout);
+  randomTree.displayGraphic(cout);
+
+   /***************************************************************************
+    * Testing Double Tree with a fixed tree of doubles
+    * *************************************************************************
+    */
+
+
+   BinarySearchTree<double> doubleTree;
+   BinarySearchTree<double> copiedDoubleTree;
+
+   //test doubleTree before it is filled
+   cout << "------------------------------------------------------------\n";
+   cout << "Testing doubleTree before it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << doubleTree.getMaximum() << endl;
+   cout << "getMinimum: " << doubleTree.getMinimum() << endl;
+   cout << "getHeight: " << doubleTree.getHeight() << endl;
+   cout << "getSize: " << doubleTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   doubleTree.inorder(cout);
+   cout << "preorder: " << endl;
+   doubleTree.preorder(cout);
+   cout << "postorder: " << endl;
+   doubleTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for doubleTree
+   cout << "Displaying the Graphic for doubleTree: \n";
+   doubleTree.displayGraphic(cout);
+
+    //copy doubleTree to copiedDoubleTree and display the graphic
+   cout << "\nCopying doubleTree to copiedDoubleTree and displaying: " << endl;
+   copiedDoubleTree = doubleTree;
+   copiedDoubleTree.displayGraphic(cout);
+
+   //fill doubleTree with numbers
+   doubleTree.insert(6.2);
+   doubleTree.insert(9.7);
+   doubleTree.insert(5.4);
+   doubleTree.insert(4.2);
+   doubleTree.insert(8.9);
+   doubleTree.insert(7.1);
+   doubleTree.insert(10.1);
+   doubleTree.insert(11.5);
+   doubleTree.insert(12.9);
+   doubleTree.insert(15.4);
+   doubleTree.insert(14.5);
+   doubleTree.insert(13.3);
+
+   //Test doubleTree after it is filled
+   cout << "Testing doubleTree after it is filled.  It should be empty. \n";
+   cout << "getMaximum: " << doubleTree.getMaximum() << endl;
+   cout << "getMinimum: " << doubleTree.getMinimum() << endl;
+   cout << "getHeight: " << doubleTree.getHeight() << endl;
+   cout << "getSize: " << doubleTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   doubleTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   doubleTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   doubleTree.postorder(cout);
+   cout << endl;  //blank line
+
+   //display the graphic for dioubleTree
+   cout << "Displaying the Graphic for doubleTree: \n";
+   doubleTree.displayGraphic(cout);
+
+   //copy doubleTree to copiedDoubleTree and display the graphic
+   cout << "\nCopying doubleTree to copiedDoubleTree and displaying: " << endl;
+   copiedDoubleTree = doubleTree;
+   copiedDoubleTree.displayGraphic(cout);
+
+   //insert more numbers before and after previous values, and re-test
+   doubleTree.insert(104.3);
+   doubleTree.insert(91.7);
+   doubleTree.insert(1005.6);
+   doubleTree.insert(1.2);
+   doubleTree.insert(2.1);
+   doubleTree.insert(3.0);
+
+   cout << "Added new values, both higher and lower." << endl;
+   cout << "getMaximum: " << doubleTree.getMaximum() << endl;
+   cout << "getMinimum: " << doubleTree.getMinimum() << endl;
+   cout << "getHeight: " << doubleTree.getHeight() << endl;
+   cout << "getSize: " << doubleTree.getSize() << endl;
+   cout << "inorder: " << endl;
+   doubleTree.inorder(cout);
+   cout << "\npreorder: " << endl;
+   doubleTree.preorder(cout);
+   cout << "\npostorder: " << endl;
+   doubleTree.postorder(cout);
+   cout << endl;  //blank line
+
+    //display the graphic for doubleTree
+   cout << "Displaying the Graphic for doubleTree: \n";
+   doubleTree.displayGraphic(cout);
+
+    //copy doubleTree to copiedDoubleTree and display the graphic
+   cout << "\nCopying doubleTree to copiedDoubleTree and displaying: " << endl;
+   copiedDoubleTree = doubleTree;
+   copiedDoubleTree.displayGraphic(cout);
+
+   /**Testing Search functionality **/
+
+   //Search for the number 10 in the firstTree variable
+   cout << "Testing search function.  Find 10: " << endl;
+   if (doubleTree.search(10.1)){
+      cout << "Found 10.1!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+   //Search for the number 10.2 in the doubleTree variable
+   cout << "Now find 10.2: " << endl;
+   if (doubleTree.search(10.2)){
+      cout << "Found 10.2!\n";
+   }
+   else {
+      cout << "Not found. :(\n";
+   }
+
+
+
+   return 0;
+}

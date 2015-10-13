@@ -1,0 +1,17 @@
+13:39:07 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+In file included from ../main.cpp:11:0:
+../functions.h: In function ‘void radixSort(std::vector<std::basic_string<char> >&, const int&, const int&)’:
+../functions.h:86:15: error: cannot convert ‘std::basic_string<char>’ to ‘int’ in assignment
+          temp = *vectorIterator;
+               ^
+../functions.h:87:40: error: invalid types ‘int[int]’ for array subscript
+          int digitI = temp[currentDigit];
+                                        ^
+make: *** [main.o] Error 1
+
+13:39:07 Build Finished (took 332ms)
+

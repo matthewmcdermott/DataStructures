@@ -1,0 +1,31 @@
+// functions.h
+// Written by Matthew McDermott (U70910297)
+// Contains the functions for project 4
+//
+
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+#include <iostream>
+#include <string>
+#include <stack>
+
+using namespace std;
+
+string getInfixExpression(const string& postFix)
+{
+   string inFix;
+   stack<char> stackA, stackB;
+
+
+
+
+
+
+
+   return inFix;
+}
+
+
+
+#endif

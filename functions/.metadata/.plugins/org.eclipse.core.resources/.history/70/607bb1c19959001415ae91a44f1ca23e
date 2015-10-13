@@ -1,0 +1,48 @@
+// functions.h
+// Written by Matthew McDermott (U70910297)
+// Contains the functions for project 4
+//
+
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+#include <iostream>
+#include <string>
+#include <stack>
+
+using namespace std;
+
+string getInfixExpression(const string& postFix)
+{
+   stack<string> stackA;
+   string right, left, temp;
+
+   //check for empty string
+   if (postFix.empty())
+      return string();
+
+   //push operands onto stack and check for operators
+   for (int i = 0; i < 0; ++i)
+   {
+      if(postFix[i]== '+' ||
+         postFix[i]=='-'||
+         postFix[i] == '*' ||
+         postFix[i] == '/')
+      {
+         right = stackA.pop() + ")";
+         left = "(" + stackA.pop();
+         temp = left + postFix[i] + right;
+         stackA.push(temp);
+      }
+      else
+      {
+         stackA.push(postFix[i]);
+      }
+   }
+
+   return stackA.top();
+}
+
+
+
+#endif

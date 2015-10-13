@@ -1,0 +1,115 @@
+22:36:00 **** Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+23:32:38 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+23:34:27 **** Incremental Build of configuration Debug for project functions ****
+make all 
+make: Nothing to be done for `all'.
+23:34:35 **** Incremental Build of configuration Debug for project functions ****
+make all 
+make: Nothing to be done for `all'.
+23:36:11 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+In file included from ../main.cpp:9:0:
+../functions.h: In function ‘std::string getInfixExpression(const string&)’:
+../functions.h:25:37: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    for (int i = 0; i < postFix.size(); ++i)
+                                     ^
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+23:36:38 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+23:39:52 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+19:40:40 **** Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+19:40:46 **** Incremental Build of configuration Debug for project functions ****
+make all 
+make: Nothing to be done for `all'.
+19:41:20 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: functions
+Invoking: GCC C++ Linker
+g++  -o "functions"  ./main.o   
+Finished building target: functions
+ 
+19:41:37 **** Incremental Build of configuration Debug for project functions ****
+make all 
+make: Nothing to be done for `all'.
+13:39:07 **** Incremental Build of configuration Debug for project functions ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+In file included from ../main.cpp:11:0:
+../functions.h: In function ‘void radixSort(std::vector<std::basic_string<char> >&, const int&, const int&)’:
+../functions.h:86:15: error: cannot convert ‘std::basic_string<char>’ to ‘int’ in assignment
+          temp = *vectorIterator;
+               ^
+../functions.h:87:40: error: invalid types ‘int[int]’ for array subscript
+          int digitI = temp[currentDigit];
+                                        ^
+make: *** [main.o] Error 1

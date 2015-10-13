@@ -1,0 +1,104 @@
+// main.cpp (used with functions.h)
+// Written by Matthew McDermott (U70910297)
+// This file is used to demonstrate the capabilities of the
+// functions.h file.
+
+#include <iostream>
+#include <string>
+#include <stack>
+#include <vector>
+#include <queue>
+#include "functions.h"
+
+using namespace std;
+
+int main()
+{
+   /*This portion of main.cpp will test the getInfixExpression function*/
+   cout << "This part will test the getInfixExpression function" << endl;
+   string string1 = "ab+";
+   string string2 = "ab+cd-*";
+   string emptyString = "";
+   cout << "\nstring1 before change: " << string1 <<
+         "\nstring1 after change: " << getInfixExpression(string1)<< endl;
+   cout << "\nstring2 before change: " << string2 <<
+            "\nstring2 after change: " << getInfixExpression(string2)<< endl;
+   cout << "\nemptyString before change: " << emptyString <<
+            "\nemptyString after change: " <<
+            getInfixExpression(emptyString)<< endl;
+
+   /*This portion of main.cpp will test the radixSort function*/
+   cout << "\nThis part will test the radixSort function" << endl;
+   //First test with base 10, 8 numbers in vector, 3 digits per number
+   vector<string> numbers1;
+   numbers1.push_back("678");
+   numbers1.push_back("721");
+   numbers1.push_back("304");
+   numbers1.push_back("620");
+   numbers1.push_back("871");
+   numbers1.push_back("224");
+   numbers1.push_back("302");
+   numbers1.push_back("001");
+
+   int digitsPerNumber = 3;
+   int base = 10;
+   cout << "\nUnsorted Numbers: ";
+   displayVector(numbers1);
+   cout << "Sorted Numbers: " ;
+   radixSort(numbers1, digitsPerNumber, base);
+   displayVector(numbers1);
+   cout << endl;
+
+   //second test with base 10, 5 numbers in vector, 3 digits per number
+   vector<string> numbers2;
+   numbers2.push_back("321");
+   numbers2.push_back("2");
+   numbers2.push_back("609");
+   numbers2.push_back("24");
+   numbers2.push_back("911");
+   digitsPerNumber = 3;
+   base = 10;
+   cout << "Unsorted Numbers: ";
+   displayVector(numbers2);
+   cout << "Sorted Numbers: " ;
+   radixSort(numbers2, digitsPerNumber, base);
+   displayVector(numbers2);
+   cout << endl;
+
+   //third test with base 2, 5 numbers in vector, 3 digits per number
+   vector<string> binaryNumbers;
+   binaryNumbers.push_back("1");
+   binaryNumbers.push_back("101");
+   binaryNumbers.push_back("000");
+   binaryNumbers.push_back("111");
+   binaryNumbers.push_back("010");
+   digitsPerNumber = 3;
+   base = 2;
+   cout << "Unsorted Numbers: ";
+   displayVector(binaryNumbers);
+   cout << "Sorted Numbers: " ;
+   radixSort(binaryNumbers, digitsPerNumber, base);
+   displayVector(binaryNumbers);
+   cout << endl;
+
+   //fourth test with base 16, 5 numbers in vector, 4 digits per number
+   //Digits utilizing the alphabet must be capital
+   vector<string> hexNumbers;
+   hexNumbers.push_back("2CC1");  //11457 in decimal
+   hexNumbers.push_back("9D8A");  //40300 in decimal
+   hexNumbers.push_back("ABCD");  //43981 in decimal
+   hexNumbers.push_back("2351");
+   hexNumbers.push_back("FD32");  //94818 in decimal
+   digitsPerNumber = 4;
+   base = 16;
+   cout << "Unsorted Numbers: ";
+   displayVector(hexNumbers);
+   cout << "Sorted Numbers: " ;
+   radixSort(hexNumbers, digitsPerNumber, base);
+   displayVector(hexNumbers);
+   cout << endl;
+
+   return 0;
+}
+
+

@@ -1,0 +1,45 @@
+0: is valid
+1: is valid
+2: is valid
+3: is not valid
+4: is valid
+5: is valid
+6: is valid
+7: is valid
+8: is valid
+9: is not valid
+10: is not valid
+11: is not valid
+12: is valid
+13: is valid
+14: is valid
+15: is not valid
+16: is not valid
+17: is not valid
+18: is valid
+19: is valid
+20: is valid
+21: is not valid
+22: is not valid
+23: is not valid
+24: is valid
+25: is valid
+26: is valid
+27: is valid
+28: is valid
+29: is not valid
+30: is not valid
+31: is not valid
+32: is valid
+33: is not valid
+34: is valid
+35: is valid
+36: is valid
+37: is valid
+38: is valid
+39: is not valid
+40: is not valid
+41: is not valid
+42: is not valid
+43: is not valid
+44: is not valid

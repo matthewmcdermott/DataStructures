@@ -1,0 +1,26 @@
+This is the explanation of the tasks performed by each member and the group
+and percentages reflecting group effort.
+
+There were two members to Group 5:
+-Matt McDermott U70910297
+-Sam Suddath <ID# HERE>
+
+Building the class:
+Together we collaborated on designing the class called DirectedGraph.  Each
+part of this class was decided upon, designed, and realized in code by us.  The 
+constructors, destructor and operator overloading functions were created by Sam 
+Suddath. The functions to access private members were created by Matt McDermott.  
+The original idea to use vectors as our base data structure to the adjacency 
+list was thought of by Sam Suddath, but we both developed the functions that 
+create and display the adjacency list.
+The following group percentages apply:
+-Matt McDermott -> 50%
+-Sam Suddath -> 50%
+
+Creating the search functions:
+When designing and implementing the search functions, we decided to create 
+functions for breadth-first search and depth-first search.  Although we 
+consulted each other for help, we wrote the actual code independently of each
+other.  The following shows who designed and wrote which functions:
+-Matt McDermott -> Depth-First Search
+-Sam Suddath -> Breadth-First Search
